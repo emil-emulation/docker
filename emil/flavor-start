@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+sysctl -p /etc/sysctl.d/30-sheepshaver.conf
+
+su - bwfla -c '/usr/sbin/guacd -b 0.0.0.0'
+
+chown -R bwfla:bwfla /home/bwfla
+su - bwfla -c '/home/bwfla/bw-fla-server/bin/standalone.sh -b 0.0.0.0'
