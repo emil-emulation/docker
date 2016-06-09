@@ -180,7 +180,7 @@ NODES="           <node>
 docker exec -it "$CONTAINER" perl -pe "s#%NODES%#$NODES#g" -i '/home/bwfla/.bwFLA/EaasConf.xml'
 docker exec -it "$CONTAINER" sed -r "s#%PUBLIC_IP%#$PUBLIC_IP:$PUBLIC_PORT#g" -i '/home/bwfla/.bwFLA/ImageArchiveConf.xml'
 docker exec -it "$CONTAINER" sed -r "s#%PUBLIC_IP%#$PUBLIC_IP:$PUBLIC_PORT#g" -i '/home/bwfla/.bwFLA/EmucompConf.xml'
-#docker exec -it "$CONTAINER" sed -r "s#%PUBLIC_IP%#$PUBLIC_IP:$PUBLIC_PORT#g" -i '/home/bwfla/.bwFLA/ObjectArchiveConf.xml'
+docker exec -it "$CONTAINER" sed -r "s#%PUBLIC_IP%#$PUBLIC_IP:$PUBLIC_PORT#g" -i '/home/bwfla/.bwFLA/ObjectArchiveConf.xml'
 docker exec -it "$CONTAINER" sed -r "/<embedGw/s#%PUBLIC_IP%#$IFRAME_IP:$IFRAME_PORT#g" -i '/home/bwfla/.bwFLA/EmilConf.xml'
 docker exec -it "$CONTAINER" sed -r "s#%PUBLIC_IP%#$PUBLIC_IP:$PUBLIC_PORT#g" -i '/home/bwfla/.bwFLA/EmilConf.xml'
 docker exec -it "$CONTAINER" sed -r "/<controlUrlAddress/s#%PUBLIC_IP%#$IFRAME_IP:$IFRAME_PORT#g" -i '/home/bwfla/.bwFLA/EmucompConf.xml'
