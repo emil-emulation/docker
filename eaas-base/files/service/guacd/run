@@ -1,0 +1,4 @@
+#!/bin/sh
+
+#exec /sbin/setuser bwfla /usr/sbin/guacd -f -b 0.0.0.0 >> /var/log/guacd.log 2>&1
+exec /usr/sbin/guacd -f -b 0.0.0.0 >> /var/log/guacd.log 2>&1
