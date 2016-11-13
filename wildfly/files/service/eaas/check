@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo -n "" > /home/bwfla/bw-fla-server/bin/jboss-cli-logging.properties
+/home/bwfla/bw-fla-server/bin/jboss-cli.sh --connect --command="quit"

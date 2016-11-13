@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -d "/home/bwfla/log" ]; then
+  /sbin/setuser bwfla mkdir -p /home/bwfla/log
+fi
+
+if [ ! -f "/home/bwfla/.bwFLA/EaasConf.xml" ]; then
+  cp /root/EaasConf.xml.default /home/bwfla/.bwFLA/EaasConf.xml
+fi
+
+if [[ -n "${WEBFQDN}" ]]; then
+    sed -i 's#<!-- <publicAddress>$WEBFQDN</publicAddress> -->#<publicAddress>'${WEBFQDN}'</publicAddress>#' /home/bwfla/.bwFLA/EaasConf.xml
+fi
+
+exec /sbin/setuser bwfla /home/bwfla/bw-fla-server/bin/standalone.sh -bmanagement=0.0.0.0 >> /home/bwfla/log/eaas.log 2>&1

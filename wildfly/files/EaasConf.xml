@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<eaasConf>
+    <softwareArchive>http://localhost:8080</softwareArchive>
+    <bladeClusterPlugin>
+        <bladeConnection>
+            <node>
+                <address>http://localhost:8080/emucomp</address>
+                <!-- <publicAddress>$WEBFQDN</publicAddress> -->
+                <nodespecs>
+                    <cpucores>2</cpucores>
+                    <memory>4096</memory>
+                    <disk>100</disk>
+                </nodespecs>
+            </node>
+	</bladeConnection>
+    </bladeClusterPlugin>
+</eaasConf>
+
