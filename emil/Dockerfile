@@ -1,13 +1,12 @@
-# DERIVING FROM MINIMALISTIC BWFLA IMAGE:
-FROM eaas/bwfla:base
+FROM eaas/wildfly
+CMD ["/sbin/my_init"]
 
-# EXECUTED DURING IMAGE BUILD:
-ADD flavor-install     /home/bwfla/flavor-install
-ADD flavor-start       /home/bwfla/flavor-start
+COPY files/service /etc/service/
+COPY files/init-scripts/ /etc/my_init.d/
 
-RUN rm -rf /home/bwfla/appserver/standalone/configuration/standalone_xml_history
-RUN DEBIAN_FRONTEND=noninteractive bash /home/bwfla/flavor-install && mv /tmp/objects /home/bwfla && rm /tmp/image-archive.tgz
+RUN mkdir -p /eaas/deployments/
+ADD eaas-server.ear /eaas/deployments/
 
-
-# EXECUTED WHEN CONTAINER IS RUN:
-CMD ["bash", "/home/bwfla/flavor-start"]
+ADD emil-ui-master /home/bwfla/emil-ui
+ADD emil-admin-ui-master /home/bwfla/emil-admin-ui
+#ADD emil-portable /home/bwfla/emil-portable
